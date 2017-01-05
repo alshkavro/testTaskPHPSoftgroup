@@ -46,7 +46,7 @@
 					</form>
 					<?php
 						$item = $_GET["item"];  
-						$array = explode(" ",$item);  
+						$array = preg_split("/(?<=\w)\b\s*[!?.]*/", $item, -1, PREG_SPLIT_NO_EMPTY);
 						$max["length"] = 0;  
 						$max["word"] = "";  
 						    for($i=0;$i < count($array);$i++)  
@@ -57,6 +57,7 @@
 						        $max["length"] = strlen($array[$i]);  
 						        }  
 						    }  
+						echo "Введений текст: <b>";
 						echo "Слово найбільшої довжини: <b>" . $max["word"] . " " . "[ " . $max["length"] . " ]</b>";
 					?>				
 				</div>
